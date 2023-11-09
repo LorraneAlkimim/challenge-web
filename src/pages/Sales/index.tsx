@@ -14,7 +14,7 @@ export function Sales() {
         <div className={styles['title-wrapper']}>
           <h2 className={styles.title}>Vendas Realizadas</h2>
 
-          <Link asButton>Inserir nova Venda</Link>
+          <Link to="/new-sale">Inserir nova Venda</Link>
         </div>
 
         <div className={styles['table-wrapper']}>
@@ -29,6 +29,7 @@ export function Sales() {
                 <th>Opções</th>
               </tr>
             </thead>
+
             <tbody>
               {Array.from({length: 4}).map((_, index) => (
                 <TableRow

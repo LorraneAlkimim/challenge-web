@@ -10,3 +10,15 @@ select,
 textarea {
   font-family: 'Roboto', sans-serif;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background: #fff;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='17' height='11' viewBox='0 0 17 11' fill='none'%3e%3cpath d='M8.05212 10.2021L1.26678 3.56152C0.797792 3.10254 0.797792 2.36035 1.26678 1.90625L2.39434 0.802734C2.86333 0.34375 3.62169 0.34375 4.08569 0.802734L8.89529 5.50977L13.7049 0.802734C14.1739 0.34375 14.9322 0.34375 15.3962 0.802734L16.5238 1.90625C16.9928 2.36523 16.9928 3.10742 16.5238 3.56152L9.73847 10.2021C9.27946 10.6611 8.5211 10.6611 8.05212 10.2021Z' fill='%23888888'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: 98% center;
+  padding-right: 2rem;
+}

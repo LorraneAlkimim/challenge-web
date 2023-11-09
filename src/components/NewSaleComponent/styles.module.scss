@@ -1,0 +1,144 @@
+@import '../../styles/mixins.scss';
+
+.container {
+  @include grid(2.57rem 1rem 3.94rem);
+  flex-direction: row;
+
+  > div {
+    h3 {
+      color: #000;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133.188%;
+      margin-bottom: 1.31rem;
+    }
+
+    &.left {
+      flex: 1;
+      padding-right: 2.45rem;
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: flex-end;
+        gap: 1.12rem;
+
+        > div:first-child {
+          grid-column: 1/4;
+        }
+      }
+
+      .form-wrapper {
+        overflow: auto;
+        height: 100%;
+        max-height: 33rem;
+
+        table {
+          width: 100%;
+          margin-top: 4.5rem;
+
+          th,
+          td {
+            color: #000;
+            font-size: 1.125rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 133.188%;
+            text-align: right;
+
+            padding: 0.875rem;
+
+            &:first-child {
+              text-align: left;
+              padding-left: 0;
+            }
+
+            &:last-child {
+              text-align: center;
+              padding-right: 0;
+            }
+
+            div {
+              display: flex;
+              align-items: center;
+              gap: 1.6rem;
+            }
+          }
+
+          tbody {
+            td {
+              color: #000;
+              font-size: 1rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 133.188%;
+            }
+          }
+        }
+      }
+    }
+
+    &.right {
+      flex: 0.7;
+      max-width: 26.631rem;
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        padding-left: 2.45rem;
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        border-left: 1px solid #c4c4c4;
+        padding-left: 2.45rem;
+
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.69rem;
+          margin-bottom: 2.45rem;
+        }
+
+        .price-wrapper,
+        .actions-wrapper {
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+
+        .price-wrapper {
+          color: #000;
+          line-height: 133.188%;
+          font-style: normal;
+          margin-top: auto;
+
+          span {
+            font-size: 1.125rem;
+            font-weight: 600;
+          }
+
+          strong {
+            font-size: 1.75rem;
+            font-weight: 700;
+
+            margin-right: 0.5rem;
+          }
+        }
+
+        .actions-wrapper {
+          margin-top: 3.56rem;
+
+          :last-child {
+            padding-left: 1.87rem;
+            padding-right: 1.87rem;
+          }
+        }
+      }
+    }
+  }
+}
