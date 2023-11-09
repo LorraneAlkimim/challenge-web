@@ -1,0 +1,121 @@
+@import '../../styles/mixins.scss';
+
+.container {
+  @include grid();
+
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.44rem;
+
+    .title {
+      color: #00585e;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 133.188%;
+    }
+  }
+
+  .table-wrapper {
+    overflow: auto;
+    max-height: 37.8rem;
+
+    table:not(.is-expanded) {
+      width: 100%;
+      min-width: 58rem;
+      border-collapse: collapse;
+
+      > thead,
+      > tbody {
+        > tr {
+          border-bottom: 1px solid #888;
+
+          > td,
+          > th {
+            padding: 0.875rem 0.75rem;
+
+            &:nth-child(-n + 3) {
+              text-align: left;
+            }
+
+            &:nth-child(n + 4) {
+              text-align: center;
+            }
+
+            div.actions {
+              display: flex;
+              justify-content: center;
+              gap: 1.6rem;
+              width: 100%;
+
+              button {
+                color: #00585e;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+
+                &:first-child {
+                  font-size: 1rem;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 133.188%;
+                }
+
+                &:disabled {
+                  opacity: 0.2;
+                  filter: grayscale(0.5);
+                  cursor: not-allowed;
+                }
+
+                &:not(:disabled):not(:last-child):hover {
+                  opacity: 0.7;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    table.is-expanded {
+      width: 100%;
+
+      thead {
+        th {
+          color: #000;
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 133.188%;
+        }
+      }
+
+      td {
+        color: #000;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 133.188%;
+      }
+
+      td,
+      th {
+        text-align: center;
+        padding: 0.69rem;
+
+        &:first-child {
+          text-align: start;
+          padding-left: 0;
+        }
+      }
+
+      tfoot {
+        td {
+          color: #003538;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
