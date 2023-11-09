@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { FaEdit, FaTrash } from 'react-icons/fa'
+import { FaEdit } from 'react-icons/fa'
+
+import { DeleteButton } from '../../components/DeleteButton'
 
 import styles from './styles.module.scss'
 
@@ -22,9 +24,7 @@ export function TableRow() {
               <FaEdit size={16} />
             </button>
 
-            <button onClick={() => {}}>
-              <FaTrash size={16} />
-            </button>
+            <DeleteButton onDelete={() => {}} />
           </div>
         </td>
       </tr>
