@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../Link'
 
 import logo from '../../assets/logo.png'
 import styles from './styles.module.scss'
