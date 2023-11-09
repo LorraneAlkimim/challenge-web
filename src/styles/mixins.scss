@@ -1,0 +1,11 @@
+@mixin grid($padding: 2.57rem 1rem 2rem, $maxWidth: 1280px) {
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: $padding;
+
+  min-height: calc(100vh - 5.4375rem);
+
+  display: flex;
+  flex-direction: column;
+}
