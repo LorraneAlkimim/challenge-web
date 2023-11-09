@@ -4,29 +4,35 @@ import { FaEdit } from 'react-icons/fa'
 
 import { DeleteButton } from '../../components/DeleteButton'
 
+import { ISale } from '../../typings/api'
 import styles from './styles.module.scss'
 
-export function TableRow() {
+type TableRowProps = {
+  sale: ISale
+  onDelete: () => void
+}
+
+export function TableRow({ sale, onDelete }: TableRowProps) {
   const [isOpened, setIsOpened] = useState(false)
   const navigate = useNavigate()
 
   return (
     <>
-      <tr>
-        <td>003</td>
-        <td>Customer Name</td>
-        <td>Seller Name</td>
-        <td>09/11/2022</td>
-        <td>R$ 99,75</td>
+      <tr key={sale.invoice_code}>
+        <td>{sale.invoice_code.toString().padStart(8, '0')}</td>
+        <td>{sale.customer.name}</td>
+        <td>{sale.seller.name}</td>
+        <td>{sale.date}</td>
+        <td>{sale.total_value}</td>
         <td>
           <div className={styles.actions}>
             <button type='button' onClick={() => setIsOpened(prev => !prev)}>{isOpened ? 'Fechar' : 'Ver itens'}</button>
 
-            <button onClick={() => navigate(`edit-sale/00404`)} type='button'>
+            <button onClick={() => navigate(`edit-sale/${sale.invoice_code}`)} type='button'>
               <FaEdit size={16} />
             </button>
 
-            <DeleteButton onDelete={() => {}} />
+            <DeleteButton onDelete={onDelete} />
           </div>
         </td>
       </tr>
@@ -37,7 +43,7 @@ export function TableRow() {
             <table className={styles['is-expanded']}>
               <thead>
                 <tr>
-                  <th>Produto/Serviço</th>
+                  <th>Produtos/Serviço</th>
                   <th>Quantidade</th>
                   <th>Preço unitário</th>
                   <th>Total do Produto</th>
@@ -47,14 +53,14 @@ export function TableRow() {
               </thead>
 
               <tbody>
-                {Array.from({length: 4}).map((_, index) => (
-                  <tr key={index}>
-                    <td>002 - Product name</td>
-                    <td>0</td>
-                    <td>R$ 31,00</td>
-                    <td>R$ 03,99</td>
-                    <td>7%</td>
-                    <td>R$ 3,67</td>
+                {sale.products.map(product => (
+                  <tr key={product.code}>
+                    <td>{product.code} - {product.description}</td>
+                    <td>{product.quantity}</td>
+                    <td>{product.price}</td>
+                    <td>{product.total_price}</td>
+                    <td>{product.total_price}%</td>
+                    <td>{product.commission}</td>
                   </tr>
                 ))}
               </tbody>
@@ -62,11 +68,11 @@ export function TableRow() {
               <tfoot>
                 <tr>
                   <td>Total da Venda</td>
-                  <td>7</td>
+                  <td>{sale.quantity_of_items}</td>
                   <td></td>
-                  <td>R$ 39,90</td>
+                  <td>{sale.total_value}</td>
                   <td></td>
-                  <td>R$ 3,50</td>
+                  <td>{sale.total_commission}</td>
                 </tr>
               </tfoot>
             </table>
