@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FaEdit } from 'react-icons/fa'
 
 import { DeleteButton } from '../../components/DeleteButton'
@@ -7,6 +8,7 @@ import styles from './styles.module.scss'
 
 export function TableRow() {
   const [isOpened, setIsOpened] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <>
@@ -20,7 +22,7 @@ export function TableRow() {
           <div className={styles.actions}>
             <button type='button' onClick={() => setIsOpened(prev => !prev)}>{isOpened ? 'Fechar' : 'Ver itens'}</button>
 
-            <button onClick={() => {}} type='button'>
+            <button onClick={() => navigate(`edit-sale/00404`)} type='button'>
               <FaEdit size={16} />
             </button>
 
