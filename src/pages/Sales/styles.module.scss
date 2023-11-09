@@ -1,7 +1,7 @@
 @import '../../styles/mixins.scss';
 
 .container {
-  @include grid();
+  @include grid(2.57rem 1rem 0);
 
   .title-wrapper {
     display: flex;
@@ -19,7 +19,6 @@
 
   .table-wrapper {
     overflow: auto;
-    max-height: 37.8rem;
 
     table:not(.is-expanded) {
       width: 100%;
