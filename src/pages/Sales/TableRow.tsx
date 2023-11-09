@@ -4,6 +4,8 @@ import { FaEdit } from 'react-icons/fa'
 
 import { DeleteButton } from '../../components/DeleteButton'
 
+import { formatDate } from '../../utils/formatDate'
+import { formatPrice } from '../../utils/formatPrice'
 import { ISale } from '../../typings/api'
 import styles from './styles.module.scss'
 
@@ -22,8 +24,8 @@ export function TableRow({ sale, onDelete }: TableRowProps) {
         <td>{sale.invoice_code.toString().padStart(8, '0')}</td>
         <td>{sale.customer.name}</td>
         <td>{sale.seller.name}</td>
-        <td>{sale.date}</td>
-        <td>{sale.total_value}</td>
+        <td>{formatDate(sale.date)}</td>
+        <td>{formatPrice(sale.total_value)}</td>
         <td>
           <div className={styles.actions}>
             <button type='button' onClick={() => setIsOpened(prev => !prev)}>{isOpened ? 'Fechar' : 'Ver itens'}</button>
@@ -57,10 +59,10 @@ export function TableRow({ sale, onDelete }: TableRowProps) {
                   <tr key={product.code}>
                     <td>{product.code} - {product.description}</td>
                     <td>{product.quantity}</td>
-                    <td>{product.price}</td>
-                    <td>{product.total_price}</td>
-                    <td>{product.total_price}%</td>
-                    <td>{product.commission}</td>
+                    <td>{formatPrice(product.price)}</td>
+                    <td>{formatPrice(product.total_price)}</td>
+                    <td>{product.commission_percentage}%</td>
+                    <td>{formatPrice(product.commission)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -70,9 +72,9 @@ export function TableRow({ sale, onDelete }: TableRowProps) {
                   <td>Total da Venda</td>
                   <td>{sale.quantity_of_items}</td>
                   <td></td>
-                  <td>{sale.total_value}</td>
+                  <td>{formatPrice(sale.total_value)}</td>
                   <td></td>
-                  <td>{sale.total_commission}</td>
+                  <td>{formatPrice(sale.total_commission)}</td>
                 </tr>
               </tfoot>
             </table>
