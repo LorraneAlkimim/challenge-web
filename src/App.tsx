@@ -1,7 +1,12 @@
+import { Route, Routes } from "react-router-dom"
+import { Sales } from "./pages/Sales"
+
 function App() {
 
   return (
-    <h1>Hello World!</h1>
+    <Routes>
+      <Route path="/" element={<Sales />} />
+    </Routes>
   )
 }
 
