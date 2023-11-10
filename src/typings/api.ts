@@ -15,6 +15,7 @@ export type ISale = {
   };
   seller: ISeller;
   products: {
+    id: string;
     code: number;
     description: string;
     commission: number;
