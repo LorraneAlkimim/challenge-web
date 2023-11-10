@@ -10,6 +10,7 @@ import { formatPrice } from '../../utils/formatPrice';
 import styles from './styles.module.scss';
 import { ISale } from '../../typings/api';
 import { DeleteButton } from '../DeleteButton';
+import { Toast } from '../Toast';
 
 type IProduct = {
   id: string
@@ -64,6 +65,8 @@ export function NewSaleComponent({
   const [sellers, setSellers] = useState<ISeller[]>([])
   const [customers, setCustomers] = useState<ICustomer[]>([])
 
+  const [toastIsOpen, setToastIsOpen] = useState(false);
+
   const findProduct = () => products.find(product => `${product.code} - ${product.description}` === productInput)
 
   function handleToAddProduct(event: MouseEvent<HTMLButtonElement>) {
@@ -101,6 +104,8 @@ export function NewSaleComponent({
       ...prevState,
       products: prevState.products.filter(product => product.id !== productId)
     }))
+
+    setToastIsOpen(true)
   }
 
   function hasAValidProduct() {
@@ -310,6 +315,8 @@ export function NewSaleComponent({
           </div>
         </div>
       </main>
+
+      <Toast title='Produto removido com sucesso!' open={toastIsOpen} onOpenChange={setToastIsOpen} />
     </>
   )
 }
