@@ -6,9 +6,11 @@ import styles from './styles.module.scss';
 
 type DeleteButtonProps = {
   onDelete: () => void
+  title: string
+  description: string
 }
 
-export function DeleteButton({ onDelete }: DeleteButtonProps) {
+export function DeleteButton({ onDelete, title, description }: DeleteButtonProps) {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger aria-label='Deletar' data-testid="delete-button" className={styles.trigger}>
@@ -20,14 +22,14 @@ export function DeleteButton({ onDelete }: DeleteButtonProps) {
 
         <AlertDialog.Content className={styles.content}>
           <AlertDialog.Title className={styles.title}>
-            Remover Venda
+            {title}
 
             <AlertDialog.Cancel>
               <RiCloseFill size={20} strokeWidth={1} />
             </AlertDialog.Cancel>
           </AlertDialog.Title>
 
-          <AlertDialog.Description className={styles.description}>Deseja remover esta venda?</AlertDialog.Description>
+          <AlertDialog.Description className={styles.description}>{description}</AlertDialog.Description>
 
           <div className={styles.actions}>
             <AlertDialog.Cancel>

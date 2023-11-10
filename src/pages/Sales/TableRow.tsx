@@ -34,7 +34,11 @@ export function TableRow({ sale, onDelete }: TableRowProps) {
               <FaEdit size={16} />
             </button>
 
-            <DeleteButton onDelete={onDelete} />
+            <DeleteButton
+              title='Remover Venda'
+              description='Deseja remover esta venda?'
+              onDelete={onDelete}
+            />
           </div>
         </td>
       </tr>

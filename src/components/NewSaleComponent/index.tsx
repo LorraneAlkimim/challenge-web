@@ -219,7 +219,11 @@ export function NewSaleComponent({
                       <div>
                         <span>{formatPrice(product.total_price)}</span>
 
-                        <DeleteButton onDelete={() => handleToRemoveProduct(product.id)} />
+                        <DeleteButton
+                          title='Remover Produto'
+                          description='Deseja remover esta produto?'
+                          onDelete={() => handleToRemoveProduct(product.id)}
+                        />
                       </div>
                     </td>
                   </tr>
