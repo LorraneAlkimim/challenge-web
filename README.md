@@ -1,27 +1,58 @@
-# React + TypeScript + Vite
+# Challenge Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-%2314354C.svg?style=flat&logo=react)
+![Typescript](https://img.shields.io/badge/Typescript-%23092E20.svg?style=flat&logo=typescript)
+![Jest](https://img.shields.io/badge/Jest-%2314354C.svg?style=flat&logo=jest&logoColor=red)
+![Radix UI](https://img.shields.io/badge/Radix%20UI-%23092E20.svg?style=flat&logo=radixui)
+![Axios](https://img.shields.io/badge/Axios-%2314354C.svg?style=flat&logo=axios&logoColor=5A29E4)
+![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-%23092E20.svg?style=flat&logo=react-router)
+![Vite](https://img.shields.io/badge/Vite-%2314354C.svg?style=flat&logo=vite)
+![SASS](https://img.shields.io/badge/SASS-%23092E20.svg?style=flat&logo=sass)
 
-Currently, two official plugins are available:
+## Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este é o Front-end do teste Challenge API, utilizado para visualizar, cadastrar e editar vendas, além de exibir as comissões por período.
 
-## Expanding the ESLint configuration
+Para desenvolver essa aplicação foi utilizado as seguintes tecnologias:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- React Router DOM
+- Typescript
+- Vite
+- SASS
+- RadixUI
+- Jest
+- Axios
 
-- Configure the top-level `parserOptions` property like this:
+## Funcionalidades
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- Permite a listagem de vendas realizadas
+- Permite a edição de uma venda
+- Permite a deleção de uma venda
+- Permite a listagem de comissões filtrando por data de inicio e fim
+
+## Como utilizar
+
+1. Baixe a versão LTS do Node.js
+
+2. Clone este repositório
+
+```
+git clone https://github.com/LorraneAlkimim/challenge-web.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Instale as dependências
+
+```
+npm install
+```
+
+3. Crie um arquivo .env na raiz do projeto, e coloque a variável VITE_API_URL assim como no .env.example
+
+4. Execute o projeto
+
+```
+npm run dev
+```
+
+(PS: para rodar os testes, execute o comando npm run test ou npm run test:dev)
