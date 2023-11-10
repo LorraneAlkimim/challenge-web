@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import { Link } from '../../components/Link';
 import { TableRow } from './TableRow';
+import { Toast } from '../../components/Toast';
 
 import { ISale } from '../../typings/api';
 import { api } from '../../lib/axios';
@@ -17,6 +18,7 @@ type ISalesResponse = {
 
 export function Sales() {
   const [sales, setSales] = useState<ISale[]>([])
+  const [toastIsOpen, setToastIsOpen] = useState(false);
 
   useEffect(() => {
     async function handleToFetchSales() {
@@ -37,6 +39,8 @@ export function Sales() {
   async function handleToDeleteSale(code: number) {
     try {
       await api.delete(`/sales/${code}/`)
+
+      setToastIsOpen(true)
 
       setSales(prevState => prevState.filter(sale => sale.invoice_code !== code))
     } catch (error) {
@@ -80,6 +84,8 @@ export function Sales() {
           </table>
         </div>
       </main>
+
+      <Toast title='Venda removida com sucesso!' open={toastIsOpen} onOpenChange={setToastIsOpen} />
     </>
   )
 }

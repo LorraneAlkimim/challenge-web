@@ -1,0 +1,68 @@
+$viewportPadding: 1.5625rem;
+
+.ToastViewport {
+  position: fixed;
+  top: 6.5575rem;
+  right: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  max-width: 100vw;
+  margin: 0;
+  list-style: none;
+  z-index: 999;
+  outline: none;
+
+  .ToastRoot {
+    background: #b7e0d1;
+    box-shadow: 0px 4px 4px 0px #0000001f;
+
+    display: flex;
+    align-items: center;
+    gap: 0.9375rem;
+
+    padding: 1.4rem;
+    border-radius: 0.3125rem;
+
+    &[data-state='open'] {
+      animation: slideIn 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &[data-state='closed'] {
+      animation: hide 200ms ease-in;
+    }
+
+    &[data-swipe='end'] {
+      animation: swipeOut 300ms ease-out;
+    }
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(calc(100% + $viewportPadding));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeOut {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(calc(100% + $viewportPadding));
+  }
+}
