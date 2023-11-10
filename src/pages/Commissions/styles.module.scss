@@ -7,6 +7,14 @@
     display: flex;
     justify-content: space-between;
 
+    .title {
+      color: #00585e;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 133.188%;
+    }
+
     form {
       display: flex;
       gap: 0.94rem;
@@ -82,6 +90,21 @@
           }
         }
       }
+    }
+  }
+
+  .not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    p {
+      color: #000;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 133.188%;
     }
   }
 }

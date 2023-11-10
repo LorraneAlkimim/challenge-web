@@ -24,3 +24,9 @@ export type ISale = {
     total_price: number;
   }[];
 };
+
+export type ICommission = {
+  seller: ISeller;
+  value: number;
+  sales_quantity: number;
+};
