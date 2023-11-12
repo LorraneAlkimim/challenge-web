@@ -9,6 +9,8 @@
 ![Vite](https://img.shields.io/badge/Vite-%2314354C.svg?style=flat&logo=vite)
 ![SASS](https://img.shields.io/badge/SASS-%23092E20.svg?style=flat&logo=sass)
 
+Acesse em: https://tourmaline-travesseiro-0b1010.netlify.app/
+
 ## Sobre o projeto
 
 Este é o Front-end do teste Challenge API, utilizado para visualizar, cadastrar e editar vendas, além de exibir as comissões por período.
