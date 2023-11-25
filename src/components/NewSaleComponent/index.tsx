@@ -67,6 +67,8 @@ export function NewSaleComponent({
 
   const [toastIsOpen, setToastIsOpen] = useState(false);
 
+  const totalPrice = sale.products.reduce((total, product) => total + product.total_price, 0)
+
   const findProduct = () => products.find(product => `${product.code} - ${product.description}` === productInput)
 
   function handleToAddProduct(event: MouseEvent<HTMLButtonElement>) {
@@ -298,7 +300,7 @@ export function NewSaleComponent({
             <div className={styles['price-wrapper']}>
               <span>Valor total da venda:</span>
 
-              <strong>{formatPrice(sale?.total_value ?? 0)}</strong>
+              <strong>{formatPrice(totalPrice)}</strong>
             </div>
 
             <div className={styles['actions-wrapper']}>
