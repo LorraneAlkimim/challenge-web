@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { NewSaleComponent } from '../../components/NewSaleComponent';
 import { ISale } from '../../typings/api';
-import { api } from '../../lib/axios';
+import { createSale } from '../../services';
 
 export function NewSale() {
   const [sale, setSale] = useState<ISale>({
@@ -37,7 +37,7 @@ export function NewSale() {
         }))
       }
 
-      await api.post('/create_sale/', data)
+      await createSale(data)
 
       navigate('/', { replace: true })
     } catch (error) {

@@ -1,7 +1,20 @@
-type ISeller = {
+export type ISeller = {
   name: string;
   seller_code: number;
 };
+
+export type ICustomer = {
+  id: string
+  name: string
+}
+
+export type IProduct = {
+  id: string
+  code: number
+  description: string
+  commission_percentage: number
+  price: number
+}
 
 export type ISale = {
   invoice_code: number;

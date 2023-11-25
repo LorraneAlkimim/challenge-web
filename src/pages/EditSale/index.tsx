@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { NewSaleComponent } from '../../components/NewSaleComponent';
 
 import { ISale } from '../../typings/api';
-import { api } from '../../lib/axios';
+import { findSale, editSale } from '../../services';
 
 export function EditSale() {
   const [sale, setSale] = useState<ISale>({
@@ -28,8 +28,10 @@ export function EditSale() {
   const { code } = useParams();
 
   useEffect(() => {
-    async function handleToFetchSale () {
-      const { data } = await api.get<ISale>(`/sales/${code}/`)
+    async function handleToFetchSale() {
+      if (!code) return
+
+      const { data } = await findSale(code)
 
       setSale(data)
     }
@@ -39,7 +41,7 @@ export function EditSale() {
 
   async function handleToEditSale() {
     try {
-      const test = {
+      const payload = {
         date: sale.date,
         seller: sale.seller.seller_code,
         customer: sale.customer.id,
@@ -49,7 +51,9 @@ export function EditSale() {
         }))
       }
 
-      await api.put(`/update_sale/${code}/`, test)
+      if (!code) return
+
+      await editSale(payload, code)
 
       navigate('/', { replace: true })
     } catch (error) {

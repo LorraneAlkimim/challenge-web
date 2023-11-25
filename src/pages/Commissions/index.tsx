@@ -5,16 +5,11 @@ import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
 import { Link } from '../../components/Link'
 
-import { api } from '../../lib/axios'
-
 import { formatPrice } from '../../utils/formatPrice'
 import { ICommission } from '../../typings/api'
 import styles from './styles.module.scss'
+import { getCommissions } from '../../services'
 
-type ICommissionsResponse = {
-  total: number
-  commissions: ICommission[]
-}
 
 export function Commissions() {
   const [commissions, setCommissions] = useState<ICommission[]>([])
@@ -34,12 +29,7 @@ export function Commissions() {
 
     endDate.setDate(endDate.getDate() + 1)
 
-    const params = {
-      start_date: startDate.toISOString(),
-      end_date: endDate.toISOString(),
-    }
-
-    const { data } = await api.get<ICommissionsResponse>('/commissions/', { params });
+    const { data } = await getCommissions(startDate, endDate)
 
     setCommissions(data?.commissions)
     setTotal(data?.total)

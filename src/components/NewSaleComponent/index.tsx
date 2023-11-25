@@ -4,43 +4,13 @@ import { Header } from '../Header';
 import { Input } from '../Input';
 import { Link } from '../Link';
 
-import { api } from '../../lib/axios';
 import { formatPrice } from '../../utils/formatPrice';
 
 import styles from './styles.module.scss';
-import { ISale } from '../../typings/api';
+import { ICustomer, IProduct, ISale, ISeller } from '../../typings/api';
 import { DeleteButton } from '../DeleteButton';
 import { Toast } from '../Toast';
-
-type IProduct = {
-  id: string
-  code: number
-  description: string
-  commission_percentage: number
-  price: number
-}
-
-type ISeller = {
-  name: string
-  seller_code: number
-}
-
-type ICustomer = {
-  id: string
-  name: string
-}
-
-type IProductResponse = {
-  results: IProduct[]
-}
-
-type ISellersResponse = {
-  results: ISeller[]
-}
-
-type ICustomersResponse = {
-  results: ICustomer[]
-}
+import { getCustomers, getProducts, getSellers } from '../../services';
 
 type NewSaleProps = {
   onSubmit: () => void
@@ -142,23 +112,23 @@ export function NewSaleComponent({
 
   useEffect(() => {
     async function fetchProducts() {
-      const { data } = await api.get<IProductResponse>('/products/')
+      const { data } = await getProducts()
 
       setProducts(data.results)
     }
 
     async function fetchSellers() {
-      const { data } = await api.get<ISellersResponse>('/sellers/')
-      
+      const { data } = await getSellers()
+
       setSellers(data.results)
     }
 
     async function fetchCustomers() {
-      const { data } = await api.get<ICustomersResponse>('/customers/')
+      const { data } = await getCustomers()
 
       setCustomers(data.results)
     }
-    
+
     fetchProducts()
     fetchSellers()
     fetchCustomers()

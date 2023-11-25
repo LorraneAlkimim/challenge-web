@@ -6,15 +6,8 @@ import { TableRow } from './TableRow';
 import { Toast } from '../../components/Toast';
 
 import { ISale } from '../../typings/api';
-import { api } from '../../lib/axios';
 import styles from './styles.module.scss';
-
-type ISalesResponse = {
-  count: number,
-  next: number | null
-  previous: number | null
-  results: ISale[]
-}
+import { deleteSale, getSales } from '../../services';
 
 export function Sales() {
   const [sales, setSales] = useState<ISale[]>([])
@@ -23,8 +16,8 @@ export function Sales() {
   useEffect(() => {
     async function handleToFetchSales() {
       try {
-        const { data } = await api.get<ISalesResponse>('/sales/')
-    
+        const { data } = await getSales()
+
         if (data.results?.length) {
           setSales(data.results)
         }
@@ -38,7 +31,7 @@ export function Sales() {
 
   async function handleToDeleteSale(code: number) {
     try {
-      await api.delete(`/sales/${code}/`)
+      await deleteSale(code)
 
       setToastIsOpen(true)
 
